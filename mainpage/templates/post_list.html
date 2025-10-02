@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Список постов сайта{% endblock title %}
+{% block content %}
+    <h1> Список постов сайта</h1>
+
+    {% for post in posts %}
+        <div style='border: 1px solid black; margin-bottom: 10px; padding: 15px'>
+            <h2>Заголовок поста: <a href="{% url "post_detail" post.id %}">{{post.title}}</a></h2>
+            <p>Текст поста: {{post.text}}</p>
+            <small> Дата создания: {{post.created_at|date:'d.m.Y H:i'}}</small>
+        </div>
+    {% empty %}
+        <p> Постов еще нет.</p>
+    {% endfor %}
+{% endblock content %}
