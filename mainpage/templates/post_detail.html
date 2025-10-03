@@ -8,4 +8,10 @@
     <p>Текст поста: {{post.text}}</p>
     <small> Дата создания: {{post.created_at|date:'d.m.Y H:i'}}</small>
     <a href="{% url 'post_edit' post.id%}" >Редактировать</a>
+
+    <form method="POST" action="{% url 'delete_post' post.id%}">
+        {% csrf_token %}
+
+        <button type='submit'>Удалить</button>
+    </form>
 {% endblock content %}

@@ -55,7 +55,17 @@ def edit_post_view(request, post_id):
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)    
 
+
         if form.is_valid():
             form.save()
             return redirect('post_detail', post_id=post.id)
         
+def  delete_post_view(request, post_id):
+    print("____________")
+    print(request)
+    print("____________")
+    post =get_object_or_404(Post, id=post_id)
+
+    post.delete()   
+
+    return redirect('post_list')
