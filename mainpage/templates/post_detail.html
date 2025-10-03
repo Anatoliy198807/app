@@ -7,4 +7,5 @@
     <h2>Заголовок поста: {{post.title}}</h2>
     <p>Текст поста: {{post.text}}</p>
     <small> Дата создания: {{post.created_at|date:'d.m.Y H:i'}}</small>
+    <a href="{% url 'post_edit' post.id%}" >Редактировать</a>
 {% endblock content %}
