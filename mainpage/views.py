@@ -76,3 +76,6 @@ def  delete_post_view(request, post_id):
     post.delete()   
 
     return redirect('mainpage:post_list')
+
+def portfol_view(request):
+    return render(request, 'mainpage/portfol.html') 

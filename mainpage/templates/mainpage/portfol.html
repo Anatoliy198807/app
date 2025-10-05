@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Порфолио{% endblock title %}
+{% block content %}
+    
+
+    <!-- Секция портфолио -->
+    <section id="portfolio" class="bg-light py-5">
+        <div class="container py-5">
+            <h2 class="fw-bold text-center mb-5">Мои работы</h2>
+            <div class="row g-4">
+                <!-- Проект 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Проект 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта 1</h5>
+                            <p class="card-text">Краткое описание проекта и выполненных задач.</p>
+                            <span class="badge bg-primary">Веб-дизайн</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Проект 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Проект 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта 2</h5>
+                            <p class="card-text">Краткое описание проекта и выполненных задач.</p>
+                            <span class="badge bg-success">Брендинг</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Проект 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Проект 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта 3</h5>
+                            <p class="card-text">Краткое описание проекта и выполненных задач.</p>
+                            <span class="badge bg-warning text-dark">Графика</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

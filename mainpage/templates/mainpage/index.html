@@ -1,15 +1,154 @@
 {% extends "base.html" %}
 {% block title %}Список постов сайта{% endblock title %}
 {% block content %}
-    <h1>Главная</h1>
-
-    {% for post in posts %}
-        <div style='border: 1px solid black; margin-bottom: 10px; padding: 15px'>
-            <h2>Заголовок поста: <a href="{% url "mainpage:post_detail" post.id %}">{{post.title}}</a></h2>
-            <p>Текст поста: {{post.text}}</p>
-            <small> Дата создания: {{post.created_at|date:'d.m.Y H:i'}}</small>
+    <section id="home" class="bg-light py-5" style="padding-top: 100px !important;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Привет, я дизайнер</h1>
+                    <p class="lead mb-4">Создаю современные и функциональные дизайны, которые помогают бизнесу выделяться и привлекать клиентов.</p>
+                    <a href="#portfolio" class="btn btn-primary btn-lg">Смотреть работы</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://via.placeholder.com/500x400" alt="Профильное изображение" class="img-fluid rounded shadow">
+                </div>
+            </div>
         </div>
-    {% empty %}
-        <p> Постов еще нет.</p>
-    {% endfor %}
+    </section>
+
+    <!-- Секция "Обо мне" -->
+    <section id="about" class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h2 class="fw-bold mb-4">Обо мне</h2>
+                    <p>Я профессиональный дизайнер с более чем 5-летним опытом создания визуальных решений для брендов и бизнесов.</p>
+                    <p>Специализируюсь на создании удобных интерфейсов, фирменного стиля и маркетинговых материалов.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Веб-дизайн</h5>
+                                    <p class="card-text">Современные адаптивные сайты и интерфейсы</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Брендинг</h5>
+                                    <p class="card-text">Разработка фирменного стиля и айдентики</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Графика</h5>
+                                    <p class="card-text">Создание маркетинговых материалов и иллюстраций</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">UI/UX</h5>
+                                    <p class="card-text">Проектирование пользовательского опыта</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция портфолио -->
+    <section id="portfolio" class="bg-light py-5">
+        <div class="container py-5">
+            <h2 class="fw-bold text-center mb-5">Мои работы</h2>
+            {% for post in posts %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Проект 1">
+                        <h2 class="card-title h5">Заголовок поста: <a href="{% url "mainpage:post_detail" post.id %}" class="text-decoration-none">{{ post.title }}</a></h2>
+                        <p class="card-text">Текст поста: {{ post.text }}</p>
+                        <small class="text-muted">Дата создания: {{ post.created_at|date:'d.m.Y H:i' }}</small>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="alert alert-info" role="alert">
+                    Постов еще нет.
+                </div>
+            {% endfor %}
+
+
+            <div class="row g-4">
+                <!-- Проект 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Проект 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта 1</h5>
+                            <p class="card-text">Краткое описание проекта и выполненных задач.</p>
+                            <span class="badge bg-primary">Веб-дизайн</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Проект 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Проект 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта 2</h5>
+                            <p class="card-text">Краткое описание проекта и выполненных задач.</p>
+                            <span class="badge bg-success">Брендинг</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Проект 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Проект 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта 3</h5>
+                            <p class="card-text">Краткое описание проекта и выполненных задач.</p>
+                            <span class="badge bg-warning text-dark">Графика</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция контактов -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold text-center mb-4">Свяжитесь со мной</h2>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="5" placeholder="Сообщение" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Отправить сообщение</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 {% endblock content %}
