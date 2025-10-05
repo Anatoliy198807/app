@@ -14,7 +14,7 @@ def register_view(request):
         form = CustomUserCreationForm(request.POST)    
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('users:login')
         else:
             
             print(form.fields['password1'].error_messages)
@@ -33,14 +33,16 @@ def login_view(request):
             print(user)
             print(user.id)
             login(request, user)
-            return redirect('post_list')
+            #return redirect('mainpage:post_list')
+            next_url= request.GET.get('next', 'mainpage:post_list')
+            return redirect(next_url)
         else:
             return render(request, 'login.html', {"form":form})
         
 def logout_view(request):
     print()
     logout(request)    
-    return redirect('post_list')
+    return redirect('mainpage:post_list')
 
 def edit_profil_view(request):
     if request.method == "GET":
@@ -52,7 +54,7 @@ def edit_profil_view(request):
         form = CustomUserCreationForm(request.POST)    
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('users:login')
         else:
             
             return render(request, 'register.html', {"form":form})

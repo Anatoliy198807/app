@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Детали поста{% endblock title %}
+{% block content %}
+<div class="container mt-4">
+    <div class="mb-3">
+        <a href="{% url "mainpage:post_list" %}" class="btn btn-outline-secondary">
+            &larr; Назад к списку постов
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h1 class="h3 mb-0">Детали поста</h1>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <h2 class="h5 text-muted">Идентификатор поста:</h2>
+                <p class="fs-5">{{ post.id }}</p>
+            </div>
+
+            <div class="mb-3">
+                <h2 class="h5 text-muted">Заголовок поста:</h2>
+                <p class="fs-4">{{ post.title }}</p>
+            </div>
+
+            <div class="mb-3">
+                <h3 class="h5 text-muted">Текст поста:</h3>
+                <p class="fs-5">{{ post.text }}</p>
+            </div>
+
+            <div class="mb-3">
+                <h3 class="h5 text-muted">Автор поста:</h3>
+                <p class="fs-5">{{ post.author }}</p>
+            </div>
+
+            <div class="mb-3">
+                <small class="text-muted d-block">Дата создания: {{ post.created_at|date:'d.m.Y H:i' }}</small>
+                <small class="text-muted d-block">Дата последнего изменения поста: {{ post.updated_at|date:'d.m.Y H:i' }}</small>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex gap-2">
+                <a href="{% url 'mainpage:post_edit' post.id %}" class="btn btn-primary">Редактировать</a>
+                
+                <form method="POST" action="{% url 'mainpage:delete_post' post.id %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+{% comment %} {% extends "base.html" %}
+{% block title %}Детали поста{% endblock title %}
+{% block content %}
+    <a href="{%url "mainpage:post_list" %}">&larr; Назад к списку постов</a>
+    <h1>Детали поста</h1>
+    <h2> Идентификатор поста:{{post.id}}</h2>
+    <h2>Заголовок поста: {{post.title}}</h2>
+    <p>Текст поста: {{post.text}}</p>
+    <p>Автор поста: {{post.author}}</p>
+
+    <small> Дата создания: {{post.created_at|date:'d.m.Y H:i'}}</small>
+    <small> Дата последнего изменения поста: {{post.updated_at|date:'d.m.Y H:i'}}</small>
+
+
+    <a href="{% url 'mainpage:post_edit' post.id%}" >Редактировать</a>
+
+    <form method="POST" action="{% url 'mainpage:delete_post' post.id%}">
+        {% csrf_token %}
+
+        <button type='submit'>Удалить</button>
+    </form>
+{% endblock content %} {% endcomment %}

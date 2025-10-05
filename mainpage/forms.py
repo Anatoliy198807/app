@@ -6,6 +6,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'text']
         labels = {
-            'titlee':'Заголовок поста',
+            'title':'Заголовок поста',
             'text':'Текст поста'
         }       
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control'}),
+            'text': forms.Textarea(attrs={'class':'form-control'})
+        }

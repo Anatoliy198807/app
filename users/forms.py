@@ -14,7 +14,7 @@ class CustomUserCreationForm(UserCreationForm):
         error_messages={
             'unique': ("Пользователь с таким именем уже существует."),
         },
-        widget=forms.TextInput(attrs={'class': 'form-input'})
+        widget=forms.TextInput(attrs={'class': 'form-control'})
     )
     email = forms.EmailField(
         max_length=64,
@@ -35,7 +35,7 @@ class CustomUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
         label="Пароль",
         widget=forms.PasswordInput(attrs={
-            'class': 'form-input',
+            'class': 'form-control',
             'autocomplete': 'new-password'  # Помогает браузерам не заполнять поле автоматически
         }),
         help_text=(
@@ -50,7 +50,7 @@ class CustomUserCreationForm(UserCreationForm):
     password2 = forms.CharField(
         label="Подтверждение пароля",
         widget=forms.PasswordInput(attrs={
-            'class': 'form-input',
+            'class': 'form-control',
             'autocomplete': 'new-password'
         }),
         help_text="Введите тот же пароль, что и выше, для проверки."
@@ -63,6 +63,11 @@ class CustomUserCreationForm(UserCreationForm):
         # Опционально: можно переопределить виджеты для стандартных полей через Meta.widgets
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя пользователя'}),
+
+        }
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control'}),
+            'text': forms.Textarea(attrs={'class':'form-control'})
         }
   
     # При необходимости можно добавить пользовательскую валидацию
