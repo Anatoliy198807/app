@@ -18,6 +18,20 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+# class Projects(models.Model):
+#     title = models.CharField(max_length=200, verbose_name="Заголовок") # verbos
+#     text = models.TextField(verbose_name="Текст")
+#     updated_at = models.DateTimeField(auto_now=True)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
+#     class Meta:
+#         verbose_name = "Проект"
+#         verbose_name_plural = "Проекты"
+#         db_table = "desing_project"
+
+#     def __str__(self):
+#         return self.title
 
 

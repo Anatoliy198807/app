@@ -79,3 +79,6 @@ def  delete_post_view(request, post_id):
 
 def portfol_view(request):
     return render(request, 'mainpage/portfol.html') 
+
+def about_us_view(request):
+    return render(request, 'mainpage/about_us.html') 

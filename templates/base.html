@@ -22,21 +22,27 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 
                     <div class="navbar-nav">                    
-                        <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Порфолио</a>
+                        
+                        <a class="nav-link {% if request.resolver_match.url_name == "about_us" %}active{% endif %}" href="{% url "mainpage:about_us" %}">О нас</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == "portfol" %}active{% endif %}" href="{% url "mainpage:portfol" %}">Портфолио</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Контакты</a>
+                        
                         {% if request.user.is_staff == 1 %}
                             <a class="nav-link {% if request.resolver_match.url_name == 'post_create'  %}active{% endif %}" href="{%url "mainpage:post_create"%} ">Создать пост</a>
                         {% endif %}
                     </div>
                     <div class="navbar-nav ms-auto">
+                        <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Этапы работ</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Стоимость услуг</a>
                         {% if request.user.is_authenticated %}
-                            <div class="nav-link">Привет {{request.user}}</div>
+                            <div class="nav-link">{{request.user}}</div>
                             <a class="nav-link" href="{%url "users:logout"%} ">Выйти</a>
                         {% else %}
                         <a class="nav-link {% if request.resolver_match.url_name == 'register'  %}active{% endif %}" href="{%url "users:register"%} ">Регистрация</a>
                         <a class="nav-link {% if request.resolver_match.url_name == 'login'  %}active{% endif %}" href="{%url "users:login"%} ">Войти</a>
                         {% endif %}
                     </div>
-                
+                .
                 </div>
             </div>
         </nav>
@@ -44,7 +50,7 @@
 
     </header>
     {% block content %}{% endblock content %}
-    <<footer class="bg-dark text-white py-4">
+    <footer class="bg-dark text-white py-4">
         <div class="container text-center">
             <p class="mb-0">&copy; 2025 Мое Портфолио. Все права защищены.</p>
         </div>
