@@ -33,7 +33,7 @@
                     </div>
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Этапы работ</a>
-                        <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Стоимость услуг</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Услуги</a>
                         {% if request.user.is_authenticated %}
                             <div class="nav-link">{{request.user}}</div>
                             <a class="nav-link" href="{%url "users:logout"%} ">Выйти</a>

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, ProjectFileForm
 # Create your views here.
 
 def index_view(request):
@@ -82,3 +82,14 @@ def portfol_view(request):
 
 def about_us_view(request):
     return render(request, 'mainpage/about_us.html') 
+
+def add_media_project_view(request):
+    if request.method == 'POST':
+        # Важно: передать и request.POST, и request.FILES в форму
+        form = ProjectFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()  # Файл автоматически сохраняется в папку и запись в БД
+            return redirect('mainpage:add_media_project') # Замените на ваш URL или имя маршрута
+    else:
+        form = ProjectFileForm()
+    return render(request, 'mainpage/add_media.html', {'form': form})

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import index_view, post_list_view, post_detail_view, create_post_view, edit_post_view, delete_post_view, portfol_view, about_us_view
+from .views import index_view, post_list_view, post_detail_view, create_post_view, edit_post_view, delete_post_view, portfol_view, about_us_view, add_media_project_view
 
 
 app_name='mainpage'
@@ -13,5 +13,6 @@ urlpatterns = [
     path("posts/<int:post_id>/delete", delete_post_view, name = 'delete_post'),
     path("portfol", portfol_view, name = 'portfol'), 
     path("about_us", about_us_view, name = 'about_us'),
+    path("add_media_project", add_media_project_view, name = 'add_media_project'),
 
 ]
