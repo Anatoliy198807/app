@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-from .models import Post
+from .models import Post, Project
 from .forms import PostForm, ProjectFileForm
 # Create your views here.
 
@@ -78,7 +78,14 @@ def  delete_post_view(request, post_id):
     return redirect('mainpage:post_list')
 
 def portfol_view(request):
-    return render(request, 'mainpage/portfol.html') 
+    Projects = Project.objects.prefetch_related('file').all()
+    
+    context = {
+            'Projects':Projects,
+            
+        }
+
+    return render(request, 'mainpage/project_list.html',context)    
 
 def about_us_view(request):
     return render(request, 'mainpage/about_us.html') 

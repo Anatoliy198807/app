@@ -15,8 +15,10 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="{%url "mainpage:index"%}">Главная страница</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <a class="navbar-brand fw-bold" href="{%url "mainpage:index"%}">
+                    
+                    Главная страница</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -31,6 +33,9 @@
                             <a class="nav-link {% if request.resolver_match.url_name == 'post_create'  %}active{% endif %}" href="{%url "mainpage:post_create"%} ">Создать пост</a>
                         {% endif %}
                     </div>
+                    <div class="navbar-nav mx-auto d-none d-lg-flex">  
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="auto" viewBox="0 0 493 451"><path d="M93 38.8v3.9l14.3.6c26.2 1.2 37.9 4.6 45.6 13.4 4.5 5.1 13.6 22.2 17.4 32.8 2.4 6.6 14.1 38.7 33.7 92 12.5 33.9 21.1 57.4 34 92.5 6.1 16.8 19.5 53.2 29.7 81s19 50.9 19.5 51.5c.6.7 30.5 1 85.8 1h84.9l.6-2.7c.4-1.5.4-3.2 0-3.8-.3-.5-3.7-1-7.5-1-16.3 0-36.5-3.2-44.1-7.1-9.9-4.9-18.5-19.7-30.2-52-15.4-42.1-52.8-143.8-55.7-151.4-1.1-2.8-9.9-26.6-19.6-53S280.8 80.6 277.2 71s-8-21.6-9.7-26.5l-3.3-9-85.6-.3L93 35zM102 250.1c-26.5 6.9-48 27.2-56.9 53.5-10.1 30.1.4 64.8 25.8 85.7 17.7 14.6 36.5 20.1 60.2 17.7 18.7-1.8 33.6-8.9 46.9-22.4 9.2-9.2 15.8-20 20.2-32.6 3-8.9 3.2-10.4 3.2-23.5 0-10.3-.4-15.7-1.8-20.5-4.2-15.4-14.7-31.9-26.7-41.9-7.6-6.4-21.9-13.5-32.3-16.1-10.7-2.7-28.1-2.7-38.6.1"/></svg>
+                    </div> 
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Этапы работ</a>
                         <a class="nav-link {% if request.resolver_match.url_name == "post_list" %}active{% endif %}" href="{% url "mainpage:post_list" %}">Услуги</a>
@@ -42,7 +47,7 @@
                         <a class="nav-link {% if request.resolver_match.url_name == 'login'  %}active{% endif %}" href="{%url "users:login"%} ">Войти</a>
                         {% endif %}
                     </div>
-                .
+                
                 </div>
             </div>
         </nav>

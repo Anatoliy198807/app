@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, ProjectFile
+from .models import Post, ProjectFile, Project
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -27,4 +27,17 @@ class ProjectFileForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class':'form-control'}),
             'text': forms.Textarea(attrs={'class':'form-control'}),
             'desing_project': forms.TextInput(attrs={'class':'form-control'}),
+        }
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'text']
+        labels = {
+            'title':'Заголовок проекта',
+            'text':'Текст проекта'
+        }       
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control'}),
+            'text': forms.Textarea(attrs={'class':'form-control'})
         }

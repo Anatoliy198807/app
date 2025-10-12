@@ -41,9 +41,9 @@ class ProjectFile(models.Model):
     name = models.CharField(max_length=20)
     # Поле image будет сохранять файлы в папку 'uploads' внутри MEDIA_ROOT
     text = models.TextField(verbose_name="Текст")
-    related_name='images' 
+    # related_name='file' 
     file = models.FileField(upload_to='uploads/')
-    desing_project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    desing_project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='file' )
     class Meta:
         verbose_name = "Медиа проекта"
         verbose_name_plural = "Медиа проектов"
