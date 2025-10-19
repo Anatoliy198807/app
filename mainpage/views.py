@@ -7,8 +7,13 @@ from .forms import PostForm, ProjectFileForm
 # Create your views here.
 
 def index_view(request):
-    posts = Post.objects.all()
-    return render(request, 'mainpage/index.html', {'posts':posts}) 
+    Projects = Project.objects.prefetch_related('file').all()
+    
+    context = {
+            'Projects':Projects,
+            
+        }
+    return render(request, 'mainpage/index.html', context) 
     #return HttpResponse("Главная страница")
     
 def post_list_view(request):
